@@ -19,16 +19,16 @@ Small changes made to toggle enable/disable the use of chat history for the next
 - [LLM Interface - For Model 2](https://huggingface.co/spaces/kolbeins/chatbot_esha)  
 
 
-# Improving pipeline scalability and model performance 
+## Improving pipeline scalability and model performance 
 
-## Model-centric approach
+### Model-centric approach
 **Learning Rate**: Too high a value can cause divergence, while too low slows convergence. A balanced rate like 1e-5 or 3e-5 helps achieve stable learning. We had a learning rate of 2e-4 (0.0002), which might have been too high. However, techniques like learning rate scheduling were also used to prevent overshooting the minimum. This might not have done anything because unstable convergence was still observed with loss jumping from between 0.4 to 1.2 throughout fine-tuning. 
 
 **Batch Size**: Smaller batch sizes introduce more stochasticity, helping escape local minima, while larger ones stabilize training and reduce noise. Batch could be increased to boost model performance, however hardware constraints limit this type of tuning. 
 
 **Epochs**: Balancing underfitting (too few epochs) and overfitting (too many epochs) is crucial to maintain performance. However, more epochs would increase the fine-tuning time. 
 
-## Data-centric approach
+### Data-centric approach
 
 **Data Diversity**: A diverse dataset helps the model generalize better across different domains and languages.
 Domain-Specific Data: For example, if the target use case is healthcare, training on medical conversations improves relevance.
